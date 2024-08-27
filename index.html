@@ -9,6 +9,7 @@
 <body>
 <header>
     <h1>Weather App</h1>
+    <button id="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 </header>
 <main>
     <section class="search-container">
@@ -30,5 +31,26 @@
     </section>
 </main>
 <script src="script.js"></script>
+<script>
+    function setDarkMode(isDark) {
+        if (isDark) {
+            document.documentElement.classList.add('dark-mode');
+            localStorage.setItem('darkMode', 'true');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+            localStorage.setItem('darkMode', 'false');
+        }
+    }
+
+    // Check user preference on page load
+    if (localStorage.getItem('darkMode') === 'true') {
+        setDarkMode(true);
+    }
+
+    // Toggle function
+    function toggleDarkMode() {
+        setDarkMode(!document.documentElement.classList.contains('dark-mode'));
+    }
+</script>
 </body>
 </html>

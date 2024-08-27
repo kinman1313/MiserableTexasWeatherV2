@@ -1,15 +1,44 @@
+/* Light mode colors */
+:root {
+    --mcm-green: #8BC34A;
+    --mcm-green-hover: #64BC32;
+    --dark-gray: #333333;
+    --medium-gray: #666666;
+    --light-gray: #F7F7F7;
+    --background-color: #F7F7F7;
+    --container-background: #FFFFFF;
+    --text-color: #333333;
+    --input-background: #F2F2F2;
+}
+
+/* Dark mode colors */
+:root.dark-mode {
+    --mcm-green: #64BC32;
+    --mcm-green-hover: #4CAF50;
+    --dark-gray: #E0E0E0;
+    --medium-gray: #BDBDBD;
+    --light-gray: #424242;
+    --background-color: #121212;
+    --container-background: #1E1E1E;
+    --text-color: #E0E0E0;
+    --input-background: #333333;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #F7F7F7; /* light gray background */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .search-container {
     margin: 20px;
     text-align: center;
-    background-color: #FFFFFF; /* white background */
+    background-color: var(--container-background);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-container input[type="text"] {
@@ -18,22 +47,22 @@ body {
     border: none;
     border-radius: 10px;
     width: 200px;
-    background-color: #F2F2F2; /* light gray background */
-    color: #333333; /* dark gray text */
+    background-color: var(--input-background);
+    color: var(--text-color);
 }
 
 .search-container button[type="button"] {
     padding: 10px;
     font-size: 16px;
-    background-color: #8BC34A; /* MCM green */
-    color: #FFFFFF; /* white text */
+    background-color: var(--mcm-green);
+    color: #FFFFFF;
     border: none;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .search-container button[type="button"]:hover {
-    background-color: #64BC32; /* MCM green hover */
+    background-color: var(--mcm-green-hover);
 }
 
 .weather-container {
@@ -41,24 +70,26 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #FFFFFF; /* white background */
+    background-color: var(--container-background);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .current-weather {
-    background-color: #F7F7F7; /* light gray background */
+    background-color: var(--light-gray);
     padding: 20px;
     border-radius: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .current-weather h2 {
     margin-top: 0;
-    color: #333333; /* dark gray text */
+    color: var(--text-color);
 }
 
 .current-weather p {
-    color: #666666; /* medium gray text */
+    color: var(--medium-gray);
 }
 
 .forecast-container {
@@ -72,27 +103,19 @@ body {
 }
 
 .forecast-container li {
-    background-color: #F7F7F7; /* light gray background */
+    background-color: var(--light-gray);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .forecast-container li h3 {
     margin-top: 0;
-    color: #333333; /* dark gray text */
+    color: var(--text-color);
 }
 
 .forecast-container li p {
-    color: #666666; /* medium gray text */
-}
-
-/* MCM-inspired color palette */
-:root {
-    --mcm-green: #8BC34A;
-    --mcm-green-hover: #64BC32;
-    --dark-gray: #333333;
-    --medium-gray: #666666;
-    --light-gray: #F7F7F7;
+    color: var(--medium-gray);
 }

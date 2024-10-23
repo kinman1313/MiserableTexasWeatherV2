@@ -29,10 +29,35 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#dark-mode-toggle {
+    padding: 10px;
+    font-size: 16px;
+    background-color: var(--mcm-green);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+    background-color: var(--mcm-green-hover);
 }
 
 .search-container {
-    margin: 20px;
+    margin-bottom: 20px;
     text-align: center;
     background-color: var(--container-background);
     padding: 20px;
@@ -41,27 +66,35 @@ body {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.search-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
 .search-container input[type="text"] {
     padding: 10px;
     font-size: 16px;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 5px;
     width: 200px;
     background-color: var(--input-background);
     color: var(--text-color);
+    margin-right: 10px;
 }
 
-.search-container button[type="button"] {
+#search-btn {
     padding: 10px;
     font-size: 16px;
     background-color: var(--mcm-green);
     color: #FFFFFF;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.search-container button[type="button"]:hover {
+#search-btn:hover {
     background-color: var(--mcm-green-hover);
 }
 
@@ -118,4 +151,25 @@ body {
 
 .forecast-container li p {
     color: var(--medium-gray);
+}
+
+.error-message {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .search-container input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    #search-btn {
+        width: 100%;
+    }
 }

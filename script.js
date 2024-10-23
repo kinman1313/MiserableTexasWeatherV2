@@ -20,8 +20,8 @@ function searchWeather() {
     }
 }
 
-function fetchApiData(zipcode) {
-    const url = `${apiUrl}/weather?zip=${zipcode}&units=imperial&appid=${apiKey}`;
+function fetchApiData(location) {
+    const url = `${apiUrl}/weather?${isNaN(location) ? `q=${location}` : `zip=${location}`}&units=imperial&appid=${apiKey}`;
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -31,7 +31,7 @@ function fetchApiData(zipcode) {
         })
         .then(data => {
             displayCurrentWeather(data);
-            fetchForecastData(data.coord);
+            return fetchForecastData(data.coord);
         })
         .catch(error => showError(error.message));
 }
@@ -44,7 +44,7 @@ function displayCurrentWeather(data) {
 
 function fetchForecastData(coord) {
     const url = `${apiUrl}/forecast?lat=${coord.lat}&lon=${coord.lon}&units=imperial&appid=${apiKey}`;
-    fetch(url)
+    return fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Forecast data not found. Please try again later.');
@@ -52,31 +52,23 @@ function fetchForecastData(coord) {
             return response.json();
         })
         .then(data => {
-            const forecastListItems = [];
-            for (let i = 0; i < 3; i++) {
-                const forecastItem = `
-                    <li>
-                        <h3>${data.list[i].dt_txt}</h3>
-                        <p>Description: ${data.list[i].weather[0].description}</p>
-                        <p>Temp: ${data.list[i].main.temp}°F</p>
-                    </li>
-                `;
-                forecastListItems.push(forecastItem);
-            }
+            const forecastListItems = data.list.slice(0, 3).map(item => `
+                <li>
+                    <h3>${item.dt_txt}</h3>
+                    <p>Description: ${item.weather[0].description}</p>
+                    <p>Temp: ${item.main.temp}°F</p>
+                </li>
+            `);
             forecastList.innerHTML = forecastListItems.join('');
-        })
-        .catch(error => showError(error.message));
+        });
 }
 
 function showError(message) {
-    // You can implement this function to display error messages to the user
-    console.error(message);
-    // For example: 
-    // const errorElement = document.createElement('div');
-    // errorElement.className = 'error-message';
-    // errorElement.textContent = message;
-    // document.body.appendChild(errorElement);
-    // setTimeout(() => errorElement.remove(), 5000);
+    const errorElement = document.createElement('div');
+    errorElement.className = 'error-message';
+    errorElement.textContent = message;
+    document.body.appendChild(errorElement);
+    setTimeout(() => errorElement.remove(), 5000);
 }
 
 function setDarkMode(isDark) {

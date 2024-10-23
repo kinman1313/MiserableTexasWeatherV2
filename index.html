@@ -7,28 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <h1>Weather App</h1>
-</header>
-<main>
-    <section class="search-container">
-        <label for="zipcode-input"></label><input type="text" id="zipcode-input" placeholder="Enter zipcode or location">
-        <button id="search-btn">Search</button>
-    </section>
-    <section class="weather-container">
-        <div class="current-weather">
-            <h2>Current Weather</h2>
-            <p id="current-weather-desc"></p>
-            <p id="current-weather-temp"></p>
-        </div>
-        <div class="forecast-container">
-            <h2>3-Day Forecast</h2>
-            <ul id="forecast-list">
-                <!-- forecast items will be generated dynamically -->
-            </ul>
-        </div>
-    </section>
-</main>
-<script src="script.js"></script>
+    <header>
+        <h1>Weather App</h1>
+        <button id="dark-mode-toggle">Dark Mode</button>
+    </header>
+    <main>
+        <section class="search-container">
+            <label for="zipcode-input">Enter zipcode or location:</label>
+            <input type="text" id="zipcode-input" placeholder="e.g., 90210 or Los Angeles">
+            <button id="search-btn">Search</button>
+        </section>
+        <section class="weather-container">
+            <div class="current-weather">
+                <h2>Current Weather</h2>
+                <p id="current-weather-desc"></p>
+                <p id="current-weather-temp"></p>
+            </div>
+            <div class="forecast-container">
+                <h2>3-Day Forecast</h2>
+                <ul id="forecast-list">
+                    <!-- forecast items will be generated dynamically -->
+                </ul>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
